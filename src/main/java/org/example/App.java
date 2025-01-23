@@ -10,6 +10,9 @@ import java.util.LinkedList;
  * Hello world!
  */
 public class App {
+
+    private static int INTERVAL = 1;
+
     public static void main(String[] args) {
         if (args.length != 6){
             throw new RuntimeException("не удалось прочитать параметры");
@@ -46,11 +49,11 @@ public class App {
                 LocalDateTime date = LocalDateTime.parse(fileLineContent.substring(20, 39), dateTimeFormatter);
                 if (timeStart == null) {
                     timeStart = date;
-                    intervalEnd = date.plusSeconds(30);
+                    intervalEnd = date.plusSeconds(INTERVAL);
                 }
                 if (date.isAfter(intervalEnd)) {
                     timeStart = date;
-                    intervalEnd = date.plusSeconds(30);
+                    intervalEnd = date.plusSeconds(INTERVAL);
 
                     float countErros = timeRecords.stream().filter(TimeRecord::isError).count();
                     float availableTime = 100 - ((countErros / timeRecords.size()) * 100);
