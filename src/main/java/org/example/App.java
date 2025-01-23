@@ -11,7 +11,6 @@ import java.util.LinkedList;
  */
 public class App {
     public static void main(String[] args) {
-//        String fileName = "C:/work/github/access1.log";
         if (args.length != 6){
             throw new RuntimeException("не удалось прочитать параметры");
         }
